@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدثر حیات سیاحتي شرکت</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Tahoma,sans-serif;
+}
+
+:root{
+  --bg:#f4f7fb;
+  --card:#fff;
+  --text:#172033;
+  --primary:#1464d2;
+  --secondary:#0b3d91;
+  --border:#dce3ef;
+  --success:#16803c;
+  --danger:#d62828;
+  --shadow:0 5px 20px #00000012;
+}
+
+body.dark{
+  --bg:#101827;
+  --card:#1b2638;
+  --text:#f1f5f9;
+  --border:#344258;
+  --shadow:0 5px 20px #00000040;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  transition:.3s;
+}
+
+header{
+  background:linear-gradient(135deg,var(--secondary),var(--primary));
+  color:white;
+  padding:15px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:var(--shadow);
+}
+
+.header-content{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand img{
+  width:55px;
+  height:55px;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid white;
+  background:white;
+}
+
+.brand h1{
+  font-size:17px;
+}
+
+.brand p{
+  font-size:11px;
+  opacity:.9;
+  margin-top:4px;
+}
+
+.header-buttons{
+  display:flex;
+  gap:6px;
+}
+
+.icon-btn{
+  border:1px solid #ffffff70;
+  background:#ffffff20;
+  color:white;
+  border-radius:10px;
+  padding:9px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:18px 12px 100px;
+}
+
+.page{
+  display:none;
+  animation:fade .3s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.hero{
+  background:linear-gradient(135deg,#0b3d91,#1877e8);
+  color:white;
+  border-radius:20px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
+}
+
+.hero h2{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  font-size:14px;
+  line-height:2;
+}
+
+.section-title{
+  text-align:center;
+  margin:25px 0 15px;
+  font-size:22px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.card h3{
+  color:var(--primary);
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+.card p{
+  line-height:1.9;
+  font-size:14px;
+}
+
+.service-icon{
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.form-box{
+  max-width:550px;
+  margin:15px auto;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.form-box h2{
+  text-align:center;
+  margin-bottom:20px;
+  color:var(--primary);
+}
+
+label{
+  display:block;
+  margin:12px 0 6px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
+  outline:none;
+  font-size:14px;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:var(--primary);
+}
+
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.btn{
+  width:100%;
+  padding:13px;
+  margin-top:15px;
+  border:0;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:var(--secondary);
+  transform:translateY(-1px);
+}
+
+.btn.secondary{
+  background:#64748b;
+}
+
+.btn.success{
+  background:var(--success);
+}
+
+.btn.danger{
+  background:var(--danger);
+}
+
+.switch-text{
+  text-align:center;
+  margin-top:15px;
+  font-size:14px;
+}
+
+.switch-text a{
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid var(--border);
+  padding:12px 0;
+  font-size:14px;
+}
+
+.info-row:last-child{
+  border-bottom:0;
+}
+
+.info-row strong{
+  color:var(--primary);
+}
+
+.notice{
+  background:#e8f1ff;
+  color:#174a91;
+  padding:14px;
+  border-radius:12px;
+  line-height:1.9;
+  font-size:14px;
+  margin:15px 0;
+}
+
+body.dark .notice{
+  background:#203b61;
+  color:#e5efff;
+}
+
+.account-header{
+  text-align:center;
+  padding:15px;
+}
+
+.avatar{
+  width:75px;
+  height:75px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  border-radius:50%;
+  background:var(--primary);
+  color:white;
+  font-size:35px;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#64748b;
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:var(--card);
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:center;
+  gap:5px;
+  z-index:30;
+  padding:8px 5px;
+}
+
+.nav-btn{
+  flex:1;
+  max-width:150px;
+  border:0;
+  background:transparent;
+  color:var(--text);
+  padding:7px 3px;
+  cursor:pointer;
+  border-radius:10px;
+  font-size:11px;
+}
+
+.nav-btn span{
+  display:block;
+  font-size:20px;
+  margin-bottom:3px;
+}
+
+.nav-btn.active{
+  background:var(--primary);
+  color:white;
+}
+
+.toast{
+  position:fixed;
+  top:85px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:400px;
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:14px;
+  border-radius:12px;
+  text-align:center;
+  display:none;
+  z-index:100;
+  font-size:14px;
+}
+
+.toast.show{
+  display:block;
+}
+
+footer{
+  text-align:center;
+  padding:25px 10px;
+  font-size:12px;
+  opacity:.7;
+}
+
+.ltr{
+  direction:ltr;
+  text-align:left;
+}
+
+@media(max-width:500px){
+  .brand h1{font-size:13px}
+  .brand p{font-size:9px}
+  .brand img{width:45px;height:45px}
+  .hero h2{font-size:21px}
+  .info-row{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="brand">
+      <img src="102777.jpg" alt="Company Logo">
+      <div>
+        <h1 data-i18n="companyName">مدثر حیات سیاحتي شرکت</h1>
+        <p data-i18n="companySubtitle">ستاسو د سفر باوري ملګری</p>
+      </div>
+    </div>
+
+    <div class="header-buttons">
+      <button class="icon-btn" onclick="changeLanguage()" id="languageBtn">دری</button>
+      <button class="icon-btn" onclick="toggleTheme()">☀️</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <div class="hero">
+      <h2 data-i18n="welcomeTitle">مدثر حیات سیاحتي شرکت ته ښه راغلاست</h2>
+      <p data-i18n="welcomeText">
+        موږ ستاسو لپاره خوندي، اسانه او باوري سفري خدمات وړاندې کوو.
+      </p>
+      <button class="btn" onclick="showPage('booking')" data-i18n="bookNow">
+        اوس بکینګ وکړئ
+      </button>
+    </div>
+
+    <h2 class="section-title" data-i18n="servicesTitle">زموږ خدمات</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div class="service-icon">✈️</div>
+        <h3 data-i18n="flightTitle">د الوتنې ټکټونه</h3>
+        <p data-i18n="flightText">د کورنیو او نړیوالو الوتنو د ټکټونو برابرول.</p>
+      </div>
+
+      <div class="card">
+        <div class="service-icon">🛂</div>
+        <h3 data-i18n="visaTitle">د ویزې خدمات</h3>
+        <p data-i18n="visaText">د ویزې اړوند معلومات او د غوښتنلیک لارښوونه.</p>
+      </div>
+
+      <div class="card">
+        <div class="service-icon">🏨</div>
+        <h3 data-i18n="hotelTitle">هوټل ریزرفیشن</h3>
+        <p data-i18n="hotelText">ستاسو لپاره د مناسب هوټل په موندلو کې مرسته.</p>
+      </div>
+
+      <div class="card">
+        <div class="service-icon">🌍</div>
+        <h3 data-i18n="tourTitle">سفرونه او سیاحت</h3>
+        <p data-i18n="tourText">د سیاحت او سفر لپاره مناسب پلانونه او خدمات.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" data-i18n="whyTitle">ولې موږ غوره کړئ؟</h2>
+
+    <div class="card">
+      <p data-i18n="whyText">
+        مسلکي خدمت، چټک ځواب، واضح معلومات او د مشتریانو رضایت زموږ لومړیتوب دی.
+      </p>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section id="login" class="page">
+    <div class="form-box">
+      <h2 data-i18n="loginTitle">حساب ته ننوتل</h2>
+
+      <form onsubmit="loginUser(event)">
+        <label data-i18n="phoneLabel">د موبایل شمېره</label>
+        <input id="loginPhone" type="tel" required placeholder="07XXXXXXXX">
+
+        <label data-i18n="passwordLabel">پټ نوم</label>
+        <input id="loginPassword" type="password" required>
+
+        <button class="btn" type="submit" data-i18n="loginBtn">ننوتل</button>
+      </form>
+
+      <div class="switch-text">
+        <span data-i18n="noAccount">حساب نه لرئ؟</span>
+        <a onclick="showPage('register')" data-i18n="registerLink">حساب جوړ کړئ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="register" class="page">
+    <div class="form-box">
+      <h2 data-i18n="registerTitle">نوی حساب جوړول</h2>
+
+      <form onsubmit="registerUser(event)">
+        <label data-i18n="nameLabel">بشپړ نوم</label>
+        <input id="registerName" type="text" required>
+
+        <label data-i18n="phoneLabel">د موبایل شمېره</label>
+        <input id="registerPhone" type="tel" required>
+
+        <label data-i18n="passwordLabel">پټ نوم</label>
+        <input id="registerPassword" type="password" minlength="4" required>
+
+        <label data-i18n="confirmPassword">د پټ نوم تایید</label>
+        <input id="registerConfirm" type="password" minlength="4" required>
+
+        <button class="btn" type="submit" data-i18n="registerBtn">
+          حساب جوړول
+        </button>
+      </form>
+
+      <div class="switch-text">
+        <span data-i18n="haveAccount">حساب لرئ؟</span>
+        <a onclick="showPage('login')" data-i18n="loginLink">ننوتل</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="page">
+    <div class="form-box">
+      <h2 data-i18n="bookingTitle">د سفر بکینګ</h2>
+
+      <form onsubmit="submitBooking(event)">
+        <label data-i18n="nameLabel">بشپړ نوم</label>
+        <input id="bookingName" type="text" required>
+
+        <label data-i18n="phoneLabel">د موبایل شمېره</label>
+        <input id="bookingPhone" type="tel" required>
+
+        <label data-i18n="serviceLabel">خدمت انتخاب کړئ</label>
+        <select id="bookingService" required>
+          <option value="" data-i18n="selectOption">انتخاب وکړئ</option>
+          <option value="flight" data-i18n="flightTitle">د الوتنې ټکټونه</option>
+          <option value="visa" data-i18n="visaTitle">د ویزې خدمات</option>
+          <option value="hotel" data-i18n="hotelTitle">هوټل ریزرفیشن</option>
+          <option value="tour" data-i18n="tourTitle">سفرونه او سیاحت</option>
+        </select>
+
+        <label data-i18n="destinationLabel">د سفر ځای</label>
+        <input id="bookingDestination" type="text" required>
+
+        <label data-i18n="dateLabel">د سفر نېټه</label>
+        <input id="bookingDate" type="date" required>
+
+        <label data-i18n="detailsLabel">نور معلومات</label>
+        <textarea id="bookingDetails"></textarea>
+
+        <button class="btn" type="submit" data-i18n="submitBooking">
+          بکینګ ثبت کړئ
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section id="payment" class="page">
+    <div class="form-box">
+      <h2 data-i18n="paymentTitle">د تادیې تایید</h2>
+
+      <div class="notice">
+        <strong data-i18n="walletTitle">د حساب واليټ نمبر:</strong>
+        <br>
+        <b dir="ltr">0771014470</b>
+        <br>
+        <span data-i18n="walletText">
+          له تادیې وروسته لاندې معلومات ثبت کړئ.
+        </span>
+      </div>
+
+      <form onsubmit="submitPayment(event)">
+        <label data-i18n="nameLabel">بشپړ نوم</label>
+        <input id="paymentName" type="text" required>
+
+        <label data-i18n="phoneLabel">د موبایل شمېره</label>
+        <input id="paymentPhone" type="tel" required>
+
+        <label data-i18n="amountLabel">د تادیې اندازه</label>
+        <input id="paymentAmount" type="number" required>
+
+        <label data-i18n="referenceLabel">د تادیې ریفرنس نمبر</label>
+        <input id="paymentReference" type="text" required>
+
+        <label data-i18n="paymentDetails">نور معلومات</label>
+        <textarea id="paymentDetails"></textarea>
+
+        <button class="btn success" type="submit" data-i18n="submitPayment">
+          د تادیې معلومات ثبت کړئ
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ACCOUNT -->
+  <section id="account" class="page">
+    <div class="form-box">
+      <div class="account-header">
+        <div class="avatar">👤</div>
+        <h2 data-i18n="accountTitle">زما حساب</h2>
+      </div>
+
+      <div id="accountContent"></div>
+
+      <button class="btn danger" onclick="logoutUser()" data-i18n="logoutBtn">
+        وتل
+      </button>
+    </div>
+  </section>
+
+  <!-- COMPANY -->
+  <section id="company" class="page">
+    <div class="card">
+      <h2 class="section-title" data-i18n="companyInfoTitle">
+        د شرکت معلومات
+      </h2>
+
+      <img src="102777.jpg" alt="Logo"
+           style="display:block;width:120px;height:120px;object-fit:cover;border-radius:50%;margin:15px auto">
+
+      <div class="info-row">
+        <span data-i18n="companyNameLabel">د شرکت نوم</span>
+        <strong data-i18n="companyName">مدثر حیات سیاحتي شرکت</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="tinLabel">TIN / ثبت نمبر</span>
+        <strong dir="ltr">9032401755</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="licenseLabel">د جواز نمبر</span>
+        <strong dir="ltr">27196613</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="phoneLabel">د موبایل شمېره</span>
+        <strong dir="ltr">0789679104</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="secondPhoneLabel">دوهمه شمېره</span>
+        <strong dir="ltr">0771518608</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="emailLabel">ایمیل</span>
+        <strong dir="ltr">Hayatullah6006@gmail.com</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="walletTitle">د حساب واليټ نمبر</span>
+        <strong dir="ltr">0771014470</strong>
+      </div>
+
+      <div class="info-row">
+        <span data-i18n="addressLabel">پته</span>
+        <strong data-i18n="addressValue">جلال اباد، افغانستان</strong>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span data-i18n="copyright">
+      © 2026 مدثر حیات سیاحتي شرکت. ټول حقوق خوندي دي.
+    </span>
+  </footer>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-page="home" onclick="showPage('home')">
+    <span>🏠</span><b data-i18n="navHome">کور</b>
+  </button>
+
+  <button class="nav-btn" data-page="booking" onclick="showPage('booking')">
+    <span>📝</span><b data-i18n="navBooking">بکینګ</b>
+  </button>
+
+  <button class="nav-btn" data-page="payment" onclick="showPage('payment')">
+    <span>💳</span><b data-i18n="navPayment">تادیه</b>
+  </button>
+
+  <button class="nav-btn" data-page="account" onclick="openAccount()">
+    <span>👤</span><b data-i18n="navAccount">حساب</b>
+  </button>
+
+  <button class="nav-btn" data-page="company" onclick="showPage('company')">
+    <span>🏢</span><b data-i18n="navCompany">شرکت</b>
+  </button>
+</nav>
+
+<script>
+const translations = {
+
+ps:{
+companyName:"مدثر حیات سیاحتي شرکت",
+companySubtitle:"ستاسو د سفر باوري ملګری",
+welcomeTitle:"مدثر حیات سیاحتي شرکت ته ښه راغلاست",
+welcomeText:"موږ ستاسو لپاره خوندي، اسانه او باوري سفري خدمات وړاندې کوو.",
+bookNow:"اوس بکینګ وکړئ",
+servicesTitle:"زموږ خدمات",
+flightTitle:"د الوتنې ټکټونه",
+flightText:"د کورنیو او نړیوالو الوتنو د ټکټونو برابرول.",
+visaTitle:"د ویزې خدمات",
+visaText:"د ویزې اړوند معلومات او د غوښتنلیک لارښوونه.",
+hotelTitle:"هوټل ریزرفیشن",
+hotelText:"ستاسو لپاره د مناسب هوټل په موندلو کې مرسته.",
+tourTitle:"سفرونه او سیاحت",
+tourText:"د سیاحت او سفر لپاره مناسب پلانونه او خدمات.",
+whyTitle:"ولې موږ غوره کړئ؟",
+whyText:"مسلکي خدمت، چټک ځواب، واضح معلومات او د مشتریانو رضایت زموږ لومړیتوب دی.",
+loginTitle:"حساب ته ننوتل",
+phoneLabel:"د موبایل شمېره",
+passwordLabel:"پټ نوم",
+loginBtn:"ننوتل",
+noAccount:"حساب نه لرئ؟",
+registerLink:"حساب جوړ کړئ",
+registerTitle:"نوی حساب جوړول",
+nameLabel:"بشپړ نوم",
+confirmPassword:"د پټ نوم تایید",
+registerBtn:"حساب جوړول",
+haveAccount:"حساب لرئ؟",
+loginLink:"ننوتل",
+bookingTitle:"د سفر بکینګ",
+serviceLabel:"خدمت انتخاب کړئ",
+selectOption:"انتخاب وکړئ",
+destinationLabel:"د سفر ځای",
+dateLabel:"د سفر نېټه",
+detailsLabel:"نور معلومات",
+submitBooking:"بکینګ ثبت کړئ",
+paymentTitle:"د تادیې تایید",
+walletTitle:"د حساب واليټ نمبر:",
+walletText:"له تادیې وروسته لاندې معلومات ثبت کړئ.",
+amountLabel:"د تادیې اندازه",
+referenceLabel:"د تادیې ریفرنس نمبر",
+paymentDetails:"نور معلومات",
+submitPayment:"د تادیې معلومات ثبت کړئ",
+accountTitle:"زما حساب",
+logoutBtn:"وتل",
+companyInfoTitle:"د شرکت معلومات",
+companyNameLabel:"د شرکت نوم",
+tinLabel:"TIN / ثبت نمبر",
+licenseLabel:"د جواز نمبر",
+secondPhoneLabel:"دوهمه شمېره",
+emailLabel:"ایمیل",
+addressLabel:"پته",
+addressValue:"جلال اباد، افغانستان",
+copyright:"© 2026 مدثر حیات سیاحتي شرکت. ټول حقوق خوندي دي.",
+navHome:"کور",
+navBooking:"بکینګ",
+navPayment:"تادیه",
+navAccount:"حساب",
+navCompany:"شرکت",
+loginSuccess:"په بریالیتوب سره حساب ته داخل شوئ.",
+registerSuccess:"حساب مو په بریالیتوب جوړ شو.",
+wrongLogin:"د موبایل شمېره یا پټ نوم ناسم دی.",
+passwordError:"پټ نومونه یو شان نه دي.",
+alreadyRegistered:"دا شمېره مخکې ثبت شوې ده.",
+bookingSuccess:"ستاسو بکینګ په بریالیتوب ثبت شو.",
+paymentSuccess:"د تادیې معلومات ثبت شول.",
+loginRequired:"لومړی خپل حساب ته داخل شئ.",
+logoutSuccess:"له حساب څخه ووتلئ.",
+welcomeUser:"ښه راغلاست",
+noBookings:"تر اوسه کوم بکینګ نشته.",
+noPayments:"تر اوسه د تادیې معلومات نشته.",
+bookings:"ستاسو بکینګونه",
+payments:"ستاسو تادیات"
+},
+
+fa:{
+companyName:"شرکت سیاحتی مدثر حیات",
+companySubtitle:"همراه مطمئن شما در سفر",
+welcomeTitle:"به شرکت سیاحتی مدثر حیات خوش آمدید",
+welcomeText:"ما خدمات سفری امن، آسان و قابل اعتماد را برای شما ارائه می‌کنیم.",
+bookNow:"اکنون ریزرف کنید",
+servicesTitle:"خدمات ما",
+flightTitle:"تکت‌های پرواز",
+flightText:"فراهم‌سازی تکت‌های پروازهای داخلی و خارجی.",
+visaTitle:"خدمات ویزه",
+visaText:"ارائه معلومات و راهنمایی در مورد درخواست ویزه.",
+hotelTitle:"رزرف هوتل",
+hotelText:"کمک در پیدا کردن هوتل مناسب برای شما.",
+tourTitle:"سفر و سیاحت",
+tourText:"برنامه‌ها و خدمات مناسب برای سفر و سیاحت.",
+whyTitle:"چرا ما را انتخاب کنید؟",
+whyText:"خدمات مسلکی، پاسخ سریع، معلومات واضح و رضایت مشتریان اولویت ما است.",
+loginTitle:"ورود به حساب",
+phoneLabel:"شماره موبایل",
+passwordLabel:"رمز عبور",
+loginBtn:"ورود",
+noAccount:"حساب ندارید؟",
+registerLink:"حساب بسازید",
+registerTitle:"ساخت حساب جدید",
+nameLabel:"نام مکمل",
+confirmPassword:"تأیید رمز عبور",
+registerBtn:"ساخت حساب",
+haveAccount:"حساب دارید؟",
+loginLink:"ورود",
+bookingTitle:"رزرف سفر",
+serviceLabel:"خدمت را انتخاب کنید",
+selectOption:"انتخاب کنید",
+destinationLabel:"مقصد سفر",
+dateLabel:"تاریخ سفر",
+detailsLabel:"معلومات اضافی",
+submitBooking:"ثبت رزرف",
+paymentTitle:"تأیید پرداخت",
+walletTitle:"شماره والیت حساب:",
+walletText:"بعد از پرداخت، معلومات زیر را ثبت کنید.",
+amountLabel:"مقدار پرداخت",
+referenceLabel:"شماره ریفرنس پرداخت",
+paymentDetails:"معلومات اضافی",
+submitPayment:"ثبت معلومات پرداخت",
+accountTitle:"حساب من",
+logoutBtn:"خروج",
+companyInfoTitle:"معلومات شرکت",
+companyNameLabel:"نام شرکت",
+tinLabel:"شماره TIN / ثبت",
+licenseLabel:"شماره جواز",
+secondPhoneLabel:"شماره دوم",
+emailLabel:"ایمیل",
+addressLabel:"آدرس",
+addressValue:"جلال‌آباد، افغانستان",
+copyright:"© 2026 شرکت سیاحتی مدثر حیات. تمام حقوق محفوظ است.",
+navHome:"خانه",
+navBooking:"رزرف",
+navPayment:"پرداخت",
+navAccount:"حساب",
+navCompany:"شرکت",
+loginSuccess:"با موفقیت وارد حساب شدید.",
+registerSuccess:"حساب شما با موفقیت ساخته شد.",
+wrongLogin:"شماره موبایل یا رمز عبور نادرست است.",
+passwordError:"رمزهای عبور یکسان نیستند.",
+alreadyRegistered:"این شماره قبلاً ثبت شده است.",
+bookingSuccess:"رزرف شما با موفقیت ثبت شد.",
+paymentSuccess:"معلومات پرداخت ثبت شد.",
+loginRequired:"لطفاً ابتدا وارد حساب شوید.",
+logoutSuccess:"از حساب خارج شدید.",
+welcomeUser:"خوش آمدید",
+noBookings:"تا هنوز رزرفی وجود ندارد.",
+noPayments:"تا هنوز معلومات پرداخت وجود ندارد.",
+bookings:"رزرف‌های شما",
+payments:"پرداخت‌های شما"
+},
+
+en:{
+companyName:"Mudassir Hayat Travel & Tours",
+companySubtitle:"Your trusted travel partner",
+welcomeTitle:"Welcome to Mudassir Hayat Travel & Tours",
+welcomeText:"We provide safe, easy and reliable travel services for you.",
+bookNow:"Book Now",
+servicesTitle:"Our Services",
+flightTitle:"Flight Tickets",
+flightText:"Domestic and international flight ticket services.",
+visaTitle:"Visa Services",
+visaText:"Visa information and application guidance.",
+hotelTitle:"Hotel Reservation",
+hotelText:"We help you find suitable hotels.",
+tourTitle:"Travel & Tourism",
+tourText:"Suitable travel and tourism plans and services.",
+whyTitle:"Why Choose Us?",
+whyText:"Professional service, quick response, clear information and customer satisfaction are our priorities.",
+loginTitle:"Login",
+phoneLabel:"Mobile Number",
+passwordLabel:"Password",
+loginBtn:"Login",
+noAccount:"Don't have an account?",
+registerLink:"Register",
+registerTitle:"Create New Account",
+nameLabel:"Full Name",
+confirmPassword:"Confirm Password",
+registerBtn:"Create Account",
+haveAccount:"Already have an account?",
+loginLink:"Login",
+bookingTitle:"Travel Booking",
+serviceLabel:"Select Service",
+selectOption:"Select",
+destinationLabel:"Travel Destination",
+dateLabel:"Travel Date",
+detailsLabel:"Additional Details",
+submitBooking:"Submit Booking",
+paymentTitle:"Payment Verification",
+walletTitle:"Account Wallet Number:",
+walletText:"After payment, submit the information below.",
+amountLabel:"Payment Amount",
+referenceLabel:"Payment Reference Number",
+paymentDetails:"Additional Information",
+submitPayment:"Submit Payment Information",
+accountTitle:"My Account",
+logoutBtn:"Logout",
+companyInfoTitle:"Company Information",
+companyNameLabel:"Company Name",
+tinLabel:"TIN / Registration Number",
+licenseLabel:"License Number",
+secondPhoneLabel:"Second Phone",
+emailLabel:"Email",
+addressLabel:"Address",
+addressValue:"Jalalabad, Afghanistan",
+copyright:"© 2026 Mudassir Hayat Travel & Tours. All rights reserved.",
+navHome:"Home",
+navBooking:"Booking",
+navPayment:"Payment",
+navAccount:"Account",
+navCompany:"Company",
+loginSuccess:"You have logged in successfully.",
+registerSuccess:"Your account was created successfully.",
+wrongLogin:"Incorrect mobile number or password.",
+passwordError:"Passwords do not match.",
+alreadyRegistered:"This number is already registered.",
+bookingSuccess:"Your booking was submitted successfully.",
+paymentSuccess:"Payment information was submitted.",
+loginRequired:"Please login first.",
+logoutSuccess:"You have logged out.",
+welcomeUser:"Welcome",
+noBookings:"No bookings yet.",
+noPayments:"No payment information yet.",
+bookings:"Your Bookings",
+payments:"Your Payments"
+}
+
+};
+
+let currentLang=localStorage.getItem("language") || "ps";
+
+function t(key){
+  return translations[currentLang][key] || translations.ps[key] || key;
+}
+
+function applyLanguage(){
+  const html=document.documentElement;
+  html.lang=currentLang;
+  html.dir=currentLang==="en" ? "ltr" : "rtl";
+
+  document.querySelectorAll("[data-i18n]").forEach(element=>{
+    const key=element.getAttribute("data-i18n");
+    element.textContent=t(key);
+  });
+
+  document.getElementById("languageBtn").textContent=
+    currentLang==="ps" ? "دری" :
+    currentLang==="fa" ? "EN" : "پښتو";
+
+  updateAccount();
+}
+
+function changeLanguage(){
+  if(currentLang==="ps") currentLang="fa";
+  else if(currentLang==="fa") currentLang="en";
+  else currentLang="ps";
+
+  localStorage.setItem("language",currentLang);
+  applyLanguage();
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+function showPage(pageId){
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  const selected=document.getElementById(pageId);
+  if(selected) selected.classList.add("active");
+
+  document.querySelectorAll(".nav-btn").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.page===pageId);
+  });
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function toast(message){
+  const box=document.getElementById("toast");
+  box.textContent=message;
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },3000);
+}
+
+function getUsers(){
+  return JSON.parse(localStorage.getItem("users") || "[]");
+}
+
+function getCurrentUser(){
+  return JSON.parse(localStorage.getItem("currentUser") || "null");
+}
+
+function registerUser(event){
+  event.preventDefault();
+
+  const name=document.getElementById("registerName").value.trim();
+  const phone=document.getElementById("registerPhone").value.trim();
+  const password=document.getElementById("registerPassword").value;
+  const confirm=document.getElementById("registerConfirm").value;
+
+  if(password!==confirm){
+    toast(t("passwordError"));
+    return;
+  }
+
+  const users=getUsers();
+
+  if(users.some(user=>user.phone===phone)){
+    toast(t("alreadyRegistered"));
+    return;
+  }
+
+  const user={name,phone,password};
+  users.push(user);
+
+  localStorage.setItem("users",JSON.stringify(users));
+  localStorage.setItem("currentUser",JSON.stringify(user));
+
+  toast(t("registerSuccess"));
+  showPage("account");
+  updateAccount();
+}
+
+function loginUser(event){
+  event.preventDefault();
+
+  const phone=document.getElementById("loginPhone").value.trim();
+  const password=document.getElementById("loginPassword").value;
+
+  const user=getUsers().find(
+    user=>user.phone===phone && user.password===password
+  );
+
+  if(!user){
+    toast(t("wrongLogin"));
+    return;
+  }
+
+  localStorage.setItem("currentUser",JSON.stringify(user));
+  toast(t("loginSuccess"));
+  showPage("account");
+  updateAccount();
+}
+
+function logoutUser(){
+  localStorage.removeItem("currentUser");
+  toast(t("logoutSuccess"));
+  showPage("home");
+}
+
+function openAccount(){
+  const user=getCurrentUser();
+
+  if(!user){
+    showPage("login");
+    return;
+  }
+
+  updateAccount();
+  showPage("account");
+}
+
+function submitBooking(event){
+  event.preventDefault();
+
+  const user=getCurrentUser();
+
+  if(!user){
+    toast(t("loginRequired"));
+    showPage("login");
+    return;
+  }
+
+  const booking={
+    name:document.getElementById("bookingName").value,
+    phone:document.getElementById("bookingPhone").value,
+    service:document.getElementById("bookingService").value,
+    destination:document.getElementById("bookingDestination").value,
+    date:document.getElementById("bookingDate").value,
+    details:document.getElementById("bookingDetails").value,
+    created:new Date().toLocaleString()
+  };
+
+  const bookings=JSON.parse(localStorage.getItem("bookings") || "[]");
+  booking.user= user.phone;
+  bookings.push(booking);
+
+  localStorage.setItem("bookings",JSON.stringify(bookings));
+
+  toast(t("bookingSuccess"));
+  event.target.reset();
+  updateAccount();
+}
+
+function submitPayment(event){
+  event.preventDefault();
+
+  const user=getCurrentUser();
+
+  if(!user){
+    toast(t("loginRequired"));
+    showPage("login");
+    return;
+  }
+
+  const payment={
+    name:document.getElementById("paymentName").value,
+    phone:document.getElementById("paymentPhone").value,
+    amount:document.getElementById("paymentAmount").value,
+    reference:document.getElementById("paymentReference").value,
+    details:document.getElementById("paymentDetails").value,
+    created:new Date().toLocaleString(),
+    user:user.phone
+  };
+
+  const payments=JSON.parse(localStorage.getItem("payments") || "[]");
+  payments.push(payment);
+
+  localStorage.setItem("payments",JSON.stringify(payments));
+
+  toast(t("paymentSuccess"));
+  event.target.reset();
+  updateAccount();
+}
+
+function updateAccount(){
+  const box=document.getElementById("accountContent");
+  if(!box) return;
+
+  const user=getCurrentUser();
+
+  if(!user){
+    box.innerHTML=`
+      <div class="empty">${t("loginRequired")}</div>
+    `;
+    return;
+  }
+
+  const bookings=JSON.parse(localStorage.getItem("bookings") || "[]")
+    .filter(item=>item.user===user.phone);
+
+  const payments=JSON.parse(localStorage.getItem("payments") || "[]")
+    .filter(item=>item.user===user.phone);
+
+  let bookingHTML="";
+
+  if(bookings.length===0){
+    bookingHTML=`<p class="empty">${t("noBookings")}</p>`;
+  }else{
+    bookingHTML=bookings.map(item=>`
+      <div class="card" style="margin-top:10px">
+        <p><b>${t("serviceLabel")}:</b> ${item.service}</p>
+        <p><b>${t("destinationLabel")}:</b> ${item.destination}</p>
+        <p><b>${t("dateLabel")}:</b> ${item.date}</p>
+      </div>
+    `).join("");
+  }
+
+  let paymentHTML="";
+
+  if(payments.length===0){
+    paymentHTML=`<p class="empty">${t("noPayments")}</p>`;
+  }else{
+    paymentHTML=payments.map(item=>`
+      <div class="card" style="margin-top:10px">
+        <p><b>${t("amountLabel")}:</b> ${item.amount}</p>
+        <p><b>${t("referenceLabel")}:</b> ${item.reference}</p>
+      </div>
+    `).join("");
+  }
+
+  box.innerHTML=`
+    <div class="info-row">
+      <span>${t("nameLabel")}</span>
+      <strong>${user.name}</strong>
+    </div>
+
+    <div class="info-row">
+      <span>${t("phoneLabel")}</span>
+      <strong dir="ltr">${user.phone}</strong>
+    </div>
+
+    <h3 style="margin-top:20px;color:var(--primary)">
+      ${t("bookings")}
+    </h3>
+
+    ${bookingHTML}
+
+    <h3 style="margin-top:20px;color:var(--primary)">
+      ${t("payments")}
+    </h3>
+
+    ${paymentHTML}
+  `;
+}
+
+if(localStorage.getItem("theme")==="dark"){
+  document.body.classList.add("dark");
+}
+
+applyLanguage();
+</script>
+
+</body>
+</html>
